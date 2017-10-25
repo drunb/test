@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 配置客户模块 -->
+	<package name="customer" extends="myDefault" namespace="/customer">
+		<!-- 添加客户页面 
+			class:属性
+				1）如果写的全限定名：那么struts2通过反射自己创建动作类
+				2）如果写的不是全限定名，那么struts2会以这个class对应的值作为key，去spring容器查询对象
+		
+		-->
+		<action name="addCustomerUI" class="customerAction" method="addCustomerUI" >
+			<result name="success" type="dispatcher">/jsp/customer/add.jsp</result>
+		</action>
+		
+		<!-- 查询客户页面 -->
+		<action name="findAllCustomer" class="customerAction" method="findAllCustomer">
+			<result name="success" type="dispatcher">/jsp/customer/list.jsp</result>
+		</action>
+	
+	</package>
+	
+</struts>

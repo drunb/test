@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- 
+	这个文件不要大家背
+ -->	
+<hibernate-configuration>
+	<!-- 
+		session-factory： session的工厂，专门用于创建session的
+			这里面都是一些配置信息
+			第一部分：数据库连接信息
+			第二部分：Hibernate的基础配置信息
+			第三部分：映射文件的位置信息
+	 -->
+<session-factory>
+	<!-- 第一部分：数据库连接信息
+		这些信息：hibernate-release-5.0.7.Final\project\etc\hibernate.properties
+	-->
+	<property name="hibernate.connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="hibernate.connection.url">
+		jdbc:mysql://localhost:3306/hold
+	</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">root</property>
+
+	<!-- 第二部分：Hibernate的基础配置信息-->
+	<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<!-- 显示sql语句 -->
+	<property name="hibernate.show_sql">true</property>
+	<!-- 格式化sql语句 -->
+	<property name="hibernate.format_sql">false</property>
+	<!-- 是否让Hibernate来维护表结构 
+		update: 如果有数据库表，就更新数据库表的结构，如果没有数据库表，那么就创建表
+	-->
+	<property name="hibernate.hbm2ddl.auto">update</property>
+
+	<!-- 配置数据源 -->
+	<property name="hibernate.connection.provider_class">
+		org.hibernate.c3p0.internal.C3P0ConnectionProvider
+	</property>
+
+	<!-- 把session绑定到当前线程上 -->
+	<property name="hibernate.current_session_context_class">
+		org.springframework.orm.hibernate5.SpringSessionContext
+	</property>
+
+	<!-- 第三部分：映射文件的位置信息 -->
+	<mapping resource="cn/itcast/entity/Customer.hbm.xml" />
+
+
+
+
+</session-factory>
+</hibernate-configuration>
+
+
